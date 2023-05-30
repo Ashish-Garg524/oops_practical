@@ -1,7 +1,13 @@
+#mysql -u <user> -p -H <host>             ->used to check whether terminal is conected to mysql or not
+#show databases;                          -> used to list all databases
+#create database <name of database>;      -> to create a database
+#drop database <name of database>         -> to delete database
+#select user,plugin from mysql.user       -> to list plugin of user, it varry from user to user. here i this program for user root it is "mysql_native_password"
+
 import mysql.connector
 class MyDatabase:
-    def _init_(self):
-        self.db = mysql.connector.connect(host="localhost", user="root", passwd="1002dasnd", database="employee")
+    def __init__(self):
+        self.db = mysql.connector.connect(host="localhost", user="root", passwd="1002dasnd", database="employee",auth_plugin="mysql_native_password")
         self.cur = self.db.cursor()
         self.create_table()
 
